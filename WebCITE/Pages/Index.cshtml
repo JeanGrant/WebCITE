@@ -1,0 +1,76 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div id="firstBlock" class="carousel slide" data-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#firstBlock" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#firstBlock" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active" style="background-color: #b2363e;">
+            <div class="d-flex h-100 align-items-center justify-content-center">
+                <div class="container">
+                    <h1 class="head1">Project C.L.A.P</h1>
+                    <p class="text m-4" style="font-size:1.19vw">The CITE Load Assistance Program aims to assist selected CITE students who have poor or no signal at home and have difficulties with having data services.</p>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfYAdyldq-L4l4Lt0KNT2ehqVyWw5K8eUGqgWQ8mznjDLaL7Q/viewform"
+                       class="btn btn-primary mt-4">Sign Up for Assistance</a>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item" style="background-color: #8d6e6c">
+            <div class="d-flex h-100 align-items-center justify-content-center">
+                <div class="container">
+                    <h1 class="head1">Your Voice Matters</h1>
+                    <p class="text m-4" style="font-size:1.19vw">The Student Government CITE Council aims to resolve your concerns to ensure the quality education you deserve.</p>
+                    <a class="btn btn-primary mt-4"  asp-area="" asp-page="/Hotlines">Tell Us What We Can Do to Help</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#firstBlock" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#firstBlock" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<div id="secondBlock" class="p-5" style="background-color:#fbf7f6;">
+    <div class="row justify-content-center">
+        <div class="col-4 rounded-3 shadow-sm p-4 pb-5" style="background-color:#fff">
+            <h5 class="head5">CITE Hotlines</h5>
+            <p class="text mt-3">A compilation of contacts of offices and administrators for you to easily access.</p>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-4 rounded-3 shadow-sm p-4 pb-5" style="background-color:#fff">
+            <h5 class="head5">Academic References</h5>
+            <p class="text mt-3">If you are in need of help for your studies, do it with ease with provided references related to your course.</p>
+        </div>
+    </div>
+</div>
+
+<div id="thirdBlock" class="p-5 mb-5" style="background-color:#292a2c">
+    <h3 class="head-3 text-center text-light text-uppercase mb-5">Get Involved</h3>
+    <div class="row justify-content-center gap-5">
+        <div class="col-3 rounded-3 p-4" style="background-color:#fff; position:relative;">
+            <h5 class="head5">InCITEs</h5>
+            <p class="text mt-3 mb-5">Voice out your complaints, suggestions ​​or questions! Let us help you improve your college experiences by answering the form.</p>
+            <a class="btn btn-outline ps-0" style="position:absolute; bottom:5px;" href="#">Learn More</a>
+        </div>
+        <div class="col-3 rounded-3 p-4" style="background-color:#fff; position:relative">
+            <h5 class="head5">CITE Directory</h5>
+            <p class="text mt-3 mb-5">The Directory serves as the Council’s list of students enrolled under CITE and for future references whenever necessary.</p>
+            <a class="btn btn-outline ps-0" style="position:absolute; bottom:5px;" href="#">Learn More</a>
+        </div>
+        <div class="col-3 rounded-3 p-4" style="background-color:#fff; position:relative;">
+            <h5 class="head5">CITE Knights</h5>
+            <p class="text mt-3 mb-5">A volunteer organization for CITE students which equips the Lasallian Core Values, as well as enhancing "volunteerism value".</p>
+            <a class="btn btn-outline ps-0" style="position:absolute; bottom:5px;" href="#">Learn More</a>
+        </div>
+    </div>
+</div>
