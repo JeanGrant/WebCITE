@@ -20,7 +20,7 @@ body {
 .logoImg {
     width: 4vw;
     max-width: 46px;
-    max-height:46px;
+    max-height: 46px;
     height: auto;
 }
 
@@ -35,7 +35,7 @@ body {
     font-size: 2.7vw;
 }
 
-.head1{
+.head1 {
     font-family: Oswald;
     font-size: 3vw;
 }
@@ -65,7 +65,7 @@ body {
     font-size: 1.5vw;
 }
 
-.leadText{
+.leadText {
     font-family: Abel;
     font-size: 1.21vw;
     font-weight: 900;
@@ -74,6 +74,12 @@ body {
 .text {
     font-family: 'Hind Madurai';
     font-size: 1.16vw;
+}
+
+.smallText {
+    font-family: 'Hind Madurai';
+    font-size: 1vw;
+    color: gray;
 }
 
 .carousel-item {
@@ -97,7 +103,7 @@ body {
     font-family: Abel;
     text-transform: uppercase;
     letter-spacing: 0.3vw;
-    font-weight:900;
+    font-weight: 900;
     font-size: 1.21vw;
 }
 
@@ -107,9 +113,110 @@ body {
         border-color: antiquewhite;
     }
 
+.btn-secondary {
+    color: #fff;
+    background-color: #b2363e;
+    border-color: #b2363e;
+    padding: 5px,15px,5px,15px;
+    font-family: Abel;
+    text-transform: uppercase;
+    letter-spacing: 0.3vw;
+    font-weight: 900;
+    font-size: 1.21vw;
+}
+
+    .btn-secondary:hover {
+        color: #fff;
+        background-color: #8b2b31;
+        border-color: #8b2b31;
+    }
+
 .btn-outline {
     color: #000;
     font-family: Abel;
     font-size: 1.21vw;
     text-decoration: underline;
+}
+
+.container.alignCenter {
+    position: absolute;
+    top: 50%;
+    transform: translate(1%,-30%);
+}
+
+.search-box {
+    border: 1px solid gray;
+    background-color: none;
+    width: fit-content;
+    border-radius: 40px;
+    padding: 10px;
+}
+
+    .search-box.active .search-autofill {
+        padding: 10px 8px;
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+        .search-box.active .search-autofill li {
+            display: block;
+        }
+
+.search-btn {
+    color: white;
+    width: 40px;
+    height: 40px;
+    float: right;
+    border-radius: 50%;
+    background: #ea2340;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .search-btn:hover {
+        color: white;
+    }
+
+.search-txt {
+    width: 400px;
+    border: none;
+    background: none;
+    outline: none;
+    float: left;
+    padding: 0;
+    padding-left: 30px;
+    color: black;
+    font-size: 1.16vw;
+    line-height: 40px;
+    margin-right: 10px;
+}
+
+.search-autofill {
+    background-color: none;
+    padding: 0px;
+    max-height: 280px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+    .search-autofill li {
+        text-align: start;
+        list-style: none;
+        cursor: default;
+        padding: 8px 12px;
+        width: 100%;
+        display: none;
+    }
+
+        .search-autofill li:hover {
+            color: #ea2340;
+        }
+
+.unselector {
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }

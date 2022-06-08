@@ -1,0 +1,137 @@
+﻿@page
+@model WebCITE.Pages.HotlinesModel
+@{
+    ViewData["Title"] = "CITE Hotline";
+}
+
+<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+<div class="pt-3 pb-3">
+    <div class="container text-center">
+        <p class="smallText mb-0" style="color:#ea2340; font-weight: 900;">FAQs</p>
+        <h4 class="head4">Do you have any concerns?</h4>
+        <div class="search-box mt-3 visually-hidden">
+            <input class="search-txt" type="text" name="" placeholder="Kindly indicate your concern" />
+            <a class="search-btn" href="#">
+                <i class="fas fa-search"></i>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="container mb-5 pt-3">
+    <div class="row gap-3 justify-content-center">
+        <div class="col-3">
+            <div id="btnOffice" class="btn text-start rounded-3 shadow-sm p-4 mb-3" style="background-color:#3d292b" onclick="showOffice()">
+                <p id="titleOffice" class="leadText mb-1" style="color:#fff">DLSL Office</p>
+                <p id="subOffice" class="smallText">A compilation of the email addresses of DLSL offices.</p>
+                <a id="linkOffice" class="btn btn-outline ps-0" style="font-size:1vw; color:#fff">Click to View</a>
+            </div>
+            <div id="btnAdmin" class="btn text-start rounded-3 shadow-sm p-4 mb-3" style="background-color:#fff" onclick="showAdmin()">
+                <p id="titleAdmin" class="leadText mb-1">CITE Administrators</p>
+                <p id="subAdmin" class="smallText">A compilation of the email addresses of CITE Administrators.</p>
+                <a id="linkAdmin" class="btn btn-outline ps-0" style="font-size:1vw">Click to View</a>
+            </div>
+            <div id="btnEnrol" class=" btn text-start rounded-3 shadow-sm p-4 mb-3" style="background-color:#fff" onclick="showEnrol()">
+                <p id="titleEnrol" class="leadText mb-1">Enrollment</p>
+                <p id="subEnrol" class="smallText">A compilation of common inquiries related to the enrollment in DLSL.</p>
+                <a id="linkEnrol" class="btn btn-outline ps-0" style="font-size:1vw">Click to View</a>
+            </div>
+            <div></div>
+        </div>
+        <div id="lstOffice" class="col-6 rounded-3 shadow-sm p-4 mb-3" style="background-color:#fff">
+            @foreach (var items in Model.offices)
+            {
+                <div class="row mb-4">
+                    <div class="col">
+                        <a href="mailto:@items.Email" class="head6 mb-0" style="font-size:1.21vw; color:#ea2340; text-decoration-line:none; font-weight:900">@items.Email</a>
+                        <p class="text text-capitalize" style="color:gray">@items.Description</p>
+                    </div>
+                </div>
+            }
+        </div>
+        <div id="lstAdmin" class="col-6 rounded-3 shadow-sm p-4 mb-3" style="background-color:#fff">
+            @foreach (var items in Model.admin)
+            {
+                <div class="row mb-4">
+                    <div class="col">
+                        <a href="mailto:@items.Email" class="head6 mb-0" style="font-size:1.21vw; color:#ea2340; text-decoration-line:none; font-weight:900">@items.Email</a>
+                        <p class="text mb-0" style="color:gray">@items.Name</p>
+                        <p class="smalltext" style="color:gray">@items.Position</p>
+                    </div>
+                </div>
+            }
+        </div>
+        <div id="lstEnrol" class="col-6 rounded-3 shadow-sm p-4 mb-3" style="background-color:#fff">
+            @foreach (var items in Model.enrol)
+            {
+                <div class="row mb-4">
+                    <div class="col">
+                        <a href="mailto:@items.Email" class="head6 mb-0" style="font-size:1.16vw; color:#ea2340; text-decoration-line:none; font-weight:900">@items.Question</a>
+                        <p class="smalltext" style="color:gray">@items.Answer</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script>
+    const btnOffice = document.getElementById("btnOffice");
+    const btnAdmin = document.getElementById("btnAdmin");
+    const btnEnrol = document.getElementById("btnEnrol");
+    const lstOffice = document.getElementById("lstOffice");
+    const lstAdmin = document.getElementById("lstAdmin");
+    const lstEnrol = document.getElementById("lstEnrol");
+    const titleOffice = document.getElementById("titleOffice");
+    const titleAdmin = document.getElementById("titleAdmin");
+    const titleEnrol = document.getElementById("titleEnrol");
+    const subOffice = document.getElementById("subOffice");
+    const subAdmin = document.getElementById("subAdmin");
+    const subEnrol = document.getElementById("subEnrol");
+    const linkOffice = document.getElementById("linkOffice");
+    const linkAdmin = document.getElementById("linkAdmin");
+    const linkEnrol = document.getElementById("linkEnrol");
+
+    function showOffice() {
+        titleOffice.style.color = "#fff";
+        linkOffice.style.color = "#fff";
+        titleAdmin.style.color = "#000";
+        linkAdmin.style.color = "#000";
+        titleEnrol.style.color = "#000";
+        linkEnrol.style.color = "#000";
+        btnOffice.style.backgroundColor = "#3d292b";
+        btnAdmin.style.backgroundColor = "#fff";
+        btnEnrol.style.backgroundColor = "#fff";
+        lstOffice.style.display = "block";
+        lstAdmin.style.display = "none";
+        lstEnrol.style.display = "none";
+    };
+    function showAdmin() {
+        titleAdmin.style.color = "#fff";
+        linkAdmin.style.color = "#fff";
+        titleOffice.style.color = "#000";
+        linkOffice.style.color = "#000";
+        titleEnrol.style.color = "#000";
+        linkEnrol.style.color = "#000";
+        btnAdmin.style.backgroundColor = "#3d292b";
+        btnOffice.style.backgroundColor = "#fff";
+        btnEnrol.style.backgroundColor = "#fff";
+        lstAdmin.style.display = "block";
+        lstOffice.style.display = "none";
+        lstEnrol.style.display = "none";
+    };
+    function showEnrol() {
+        titleEnrol.style.color = "#fff";
+        linkEnrol.style.color = "#fff";
+        titleAdmin.style.color = "#000";
+        linkAdmin.style.color = "#000";
+        titleOffice.style.color = "#000";
+        titleOffice.style.color = "#000";
+        btnEnrol.style.backgroundColor = "#3d292b";
+        btnOffice.style.backgroundColor = "#fff";
+        btnAdmin.style.backgroundColor = "#fff";
+        lstEnrol.style.display = "block";
+        lstOffice.style.display = "none";
+        lstAdmin.style.display = "none";
+    };
+</script>

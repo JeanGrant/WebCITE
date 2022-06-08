@@ -1,0 +1,167 @@
+﻿@page
+@model WebCITE.Pages.ELibraryModel
+@{
+    ViewData["Title"] = "E-Library";
+    var elemAt = 0;
+}
+
+<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+<div id="searchContainer" class="container text-center alignCenter" style="width:fit-content; ">
+    <p class="smallText mb-0" style="color:#ea2340; font-weight: 900;">E-Library</p>
+    <h4 class="head4">Step up your game!</h4>
+    <div class="search-box mt-3 justify-content-center">
+        <div class="row">
+            <input class="search-txt" type="text" name="" placeholder="Find your program" />
+            <a class="search-btn visually-hidden" href="#">
+                <i class="fas fa-search"></i>
+            </a>
+        </div>
+        <div class="search-autofill text-start"></div>
+    </div>
+</div>
+@foreach (var items in Model.eLib)
+{
+    <div id="@items.idDiv" class="text-light mb-4 pt-5 visually-hidden" style="background-color:#292a2c;">
+        <div class="container col-12" style="">
+            <div class="row" style="margin-bottom: 100px;">
+                <div class="col-12 text-center justify-content-center" style="position:relative;">
+                    <h3 class="head3">@items.Title</h3>
+                    <p class="text" style="color:lightgray">Compiled by: @items.Contributor</p>
+                    <p class="smallText fst-italic mt-3" style="color:lightgray">The resources are grouped by year level.</p>
+                    <hr />
+                    <div class="row ms-2 justify-content-center text-center" style="position:absolute; left:50%; transform:translateX(-50%); width:fit-content;">
+                        <a href=@items.link1 class="btn btn-secondary me-4" style="width:fit-content">First Year</a>
+                        <a href=@items.link2 class="btn btn-secondary me-4" style="width:fit-content">Second Year</a>
+                        <a href=@items.link3 class="btn btn-secondary me-4" style="width:fit-content">Third Year</a>
+                        <a href=@items.link4 class="btn btn-secondary me-4" style="width:fit-content">Fourth Year</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-5">
+                <div class="col-7 text-start" style="">
+                    <h3 class="head3">Program Description</h3>
+                    <hr />
+                    <p class="text">@items.ProgDesc</p>
+                    <p class="smallText fst-italic">@items.CareerOp</p>
+                </div>
+                <div class="col-5">
+                    <img src="@items.imgLink" class="" style="object-fit: cover; width:400px; height:400px; display:block; margin-left:auto; margin-right:auto;" draggable="false" />
+                </div>
+            </div>
+            <div class="row mb-5"></div>
+        </div>
+    </div>
+}
+<script>
+
+    let suggestions = [
+        "Computer Engineering",
+        "Computer Science",
+        "Electrical Engineering",
+        "Electronics Engineering",
+        "Industrial Engineering",
+        "Information Technology"
+    ];
+
+    const searchContainer = document.getElementById("searchContainer")
+    const searchWrapper = document.querySelector(".search-box");
+    const inputBox = searchWrapper.querySelector("input");
+    const suggBox = searchWrapper.querySelector(".search-autofill");
+    const progDescAlt = document.getElementById("progDescAlt");
+
+    inputBox.onkeyup = (e) => {
+        let userData = e.target.value;
+        let emptyArray = [];
+        if (userData) {
+            emptyArray = suggestions.filter((data) => {
+                return data.toLowerCase().startsWith(userData.toLowerCase());
+            });
+            emptyArray = emptyArray.map((data) => {
+                return data = '<li>' + data + '</li>';
+            })
+            console.log(emptyArray);
+            searchWrapper.classList.add("active");
+            showSuggestions(emptyArray);
+            console.log(emptyArray.length);
+            if (emptyArray.length > 0) {
+                let allList = suggBox.querySelectorAll("li");
+                for (let i = 0; i < allList.length; i++) {
+                    console.log(allList[i]);
+                    allList[i].setAttribute("onclick", "select(this)");
+                }
+            }
+        } else {
+            searchWrapper.classList.remove("active");
+        }
+    }
+
+    function select(element) {
+        let selectUserData = element.textContent;
+        inputBox.value = selectUserData;
+        document.title = "E-Library - " + selectUserData;
+        searchWrapper.classList.remove("active");
+        searchContainer.classList.remove("alignCenter");
+        searchContainer.style.marginTop = "50px";
+        searchContainer.style.marginBottom = "150px";
+        searchContainer.style.position = "relative";
+        searchContainer.style.height = "100px";
+
+        if (selectUserData === "Computer Engineering") {
+            document.getElementById("compEng").classList.remove("visually-hidden");
+            document.getElementById("compSci").classList.add("visually-hidden");
+            document.getElementById("elecEng").classList.add("visually-hidden");
+            document.getElementById("elexEng").classList.add("visually-hidden");
+            document.getElementById("indEng").classList.add("visually-hidden");
+            document.getElementById("infTech").classList.add("visually-hidden");
+        } else if (selectUserData === "Computer Science") {
+            document.getElementById("compSci").classList.remove("visually-hidden");
+            document.getElementById("compEng").classList.add("visually-hidden");
+            document.getElementById("elecEng").classList.add("visually-hidden");
+            document.getElementById("elexEng").classList.add("visually-hidden");
+            document.getElementById("indEng").classList.add("visually-hidden");
+            document.getElementById("infTech").classList.add("visually-hidden");
+        } else if (selectUserData === "Electrical Engineering") {
+            document.getElementById("elecEng").classList.remove("visually-hidden");
+            document.getElementById("compEng").classList.add("visually-hidden");
+            document.getElementById("compSci").classList.add("visually-hidden");
+            document.getElementById("elexEng").classList.add("visually-hidden");
+            document.getElementById("indEng").classList.add("visually-hidden");
+            document.getElementById("infTech").classList.add("visually-hidden");
+        } else if (selectUserData === "Electronics Engineering") {
+            document.getElementById("elexEng").classList.remove("visually-hidden");
+            document.getElementById("compEng").classList.add("visually-hidden");
+            document.getElementById("compSci").classList.add("visually-hidden");
+            document.getElementById("elecEng").classList.add("visually-hidden");
+            document.getElementById("indEng").classList.add("visually-hidden");
+            document.getElementById("infTech").classList.add("visually-hidden");
+        } else if (selectUserData === "Industrial Engineering") {
+            document.getElementById("indEng").classList.remove("visually-hidden");
+            document.getElementById("compEng").classList.add("visually-hidden");
+            document.getElementById("compSci").classList.add("visually-hidden");
+            document.getElementById("elecEng").classList.add("visually-hidden");
+            document.getElementById("elexEng").classList.add("visually-hidden");
+            document.getElementById("infTech").classList.add("visually-hidden");
+        } else if (selectUserData === "Information Technology") {
+            document.getElementById("infTech").classList.remove("visually-hidden");
+            document.getElementById("compEng").classList.add("visually-hidden");
+            document.getElementById("compSci").classList.add("visually-hidden");
+            document.getElementById("elecEng").classList.add("visually-hidden");
+            document.getElementById("elexEng").classList.add("visually-hidden");
+            document.getElementById("indEng").classList.add("visually-hidden");
+        }
+    }
+
+    function showSuggestions(list) {
+        let listData;
+        if (!list.length) {
+            userValue = inputBox.value;
+            listData = '<li>' + "No results found" + '</li>';
+            suggBox.querySelectorAll("li")
+        } else {
+            listData = list.join('');
+            console.log(listData);
+        }
+        suggBox.innerHTML = listData;
+    }
+</script>
